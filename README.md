@@ -31,7 +31,7 @@ Một ứng dụng web đơn giản giúp bạn quản lý chi tiêu hàng thán
    ```
 2. Mở file `index.html` bằng trình duyệt bất kỳ.
 
-> ⚡ Lưu ý: Dự án này **không cần backend server**. Mọễi dữ liệu đều lưu trực tiếp trong LocalStorage.
+> ⚡ Lưu ý: Dự án này **không cần backend server**. Mọi dữ liệu đều lưu trực tiếp trong LocalStorage.
 
 ## 🚀 Cách sử dụng
 
@@ -52,7 +52,7 @@ Một ứng dụng web đơn giản giúp bạn quản lý chi tiêu hàng thán
 
 Nếu bạn có góp ý, câu hỏi hoặc muốn đóng góp thêm:
 
-- Email: **your-email@example.com**
+- Email: **nnthen1209@gmail.com**
 - GitHub: 2imClay(https://github.com/2imClay)
 
 ---
