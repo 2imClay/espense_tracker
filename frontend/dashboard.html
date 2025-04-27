@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard - Quản lý chi tiêu</title>
+  <link rel="stylesheet" href="/frontend/css/style.css">
+  <script defer src="/frontend/js/dashboard.js"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col items-center justify-start text-black dark:bg-gray-800 dark:text-white relative">
+
+  <div class="top-bar">
+    <button onclick="toggleTheme()" class="top-button" id="themeButton">
+      🌞 Chế độ
+    </button>
+    
+    <div class="spacer"></div> <!-- spacer đẩy các nút ra phải -->
+  
+    <button onclick="toggleSettings()" class="top-button" id="settingsButton">
+      ⚙️ Cài đặt
+    </button>
+  </div>
+  <!-- Thêm khung menu Cài đặt -->
+  <div id="settingsMenu" class="settings-menu hidden">
+    <button onclick="openProfile()" class="settings-item">👤 Thông tin cá nhân</button>
+    <button onclick="openGoals()" class="settings-item">🎯 Đặt mục tiêu chi tiêu</button>
+    <button onclick="confirmLogout()" class="settings-item">🚪 Đăng xuất</button>
+    <button onclick="deleteAllData()" class="settings-item">🗑️ Xóa toàn bộ dữ liệu</button>
+    <button onclick="deleteAccount()" class="settings-item">❌ Xóa tài khoản</button>
+  </div>
+  
+  <!-- Modal Đặt mục tiêu -->
+  <div id="goalsModal" class="modal">
+    <div class="modal-content grid md:grid-cols-2 gap-6 max-h-[90vh] overflow-hidden">
+      
+      <!-- Bên trái: Form nhập mục tiêu -->
+      <div class="flex flex-col">
+        <h2 class="text-2xl font-bold mb-6">Đặt mục tiêu chi tiêu</h2>
+
+        <label class="block mb-2 font-semibold">Tên loại chi tiêu:</label>
+        <input id="goalCategoryName" type="text" placeholder="VD: Ăn uống" class="input mb-4" />
+
+        <label class="block mb-2 font-semibold">Số tiền mục tiêu:</label>
+        <input id="goalCategoryAmount" type="number" placeholder="VD: 5000000" class="input mb-6" />
+
+        <button onclick="addGoalCategory()" class="button mb-4">➕ Thêm loại mục tiêu</button>
+
+        <button onclick="closeGoals()" class="button mt-auto">Đóng</button>
+      </div>
+
+      <!-- Bên phải: Danh sách loại mục tiêu -->
+      <div class="flex flex-col overflow-y-auto max-h-[70vh] pr-2">
+        <h3 class="text-xl font-semibold mb-4">Danh sách loại mục tiêu:</h3>
+        <div id="goalList" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div> <!-- 2 cột chia đẹp -->
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <h1 id="welcome" class="text-3xl font-bold my-8 text-center">Xin chào!</h1>
+
+  <div class="dashboard-container">
+    <div class="left-panel">
+      <div class="p-6 mb-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg">
+        <h2 class="text-2xl font-bold mb-4">💰 Thiết lập tổng tiền đầu tháng</h2>
+      
+        <div class="mb-4">
+        <label class="font-semibold mb-2 block">Chọn tháng:</label>
+        <input id="monthInput" type="month" class="input mb-4" />
+        </div>
+
+        <div class="mb-4">
+        <label class="font-semibold mb-2 block">Tổng tiền đầu tháng:</label>
+        <input id="budgetInput" type="number" placeholder="VD: 10000000" class="input mb-6" />
+        </div>
+
+        <button onclick="saveBudget()" class="button w-full">Lưu tổng tiền</button>
+      </div>
+      
+      <div class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg">
+        <h2 class="text-2xl font-bold mb-4">📝 Thêm khoản chi tiêu</h2>
+
+        <div class="mb-4">
+          <label for="expenseName" class="block font-semibold mb-2">Tên khoản chi tiết:</label>
+          <input id="expenseName" type="text" placeholder="VD: Ăn cơm gà" class="input" />
+        </div>
+        
+        <div class="mb-4">
+          <label for="expenseCategory" class="block font-semibold mb-2">Phân loại:</label>
+          <select id="expenseCategory" class="input select"></select>
+        </div>
+        
+        <div class="mb-6">
+          <label for="expenseAmount" class="block font-semibold mb-2">Số tiền:</label>
+          <input id="expenseAmount" type="number" placeholder="VD: 500000" class="input" />
+        </div>        
+      
+        <button onclick="addExpense()" class="button w-full">Thêm khoản chi</button>
+      </div>
+      
+      
+    </div>
+
+    <div class="right-panel">
+      <h2 class="text-2xl font-bold mb-4">Danh sách theo tháng</h2>
+      <div id="monthList" class="space-y-4"></div>
+    </div>
+    
+  </div>
+
+  <div id="profileModal" class="profileModal">
+    <div class="profileModal-content">
+      <h2 class="text-2xl font-bold mb-4">Thông tin cá nhân</h2>
+      <p id="profileUsername" class="mb-2"></p>
+      <p id="profileEmail" class="mb-4"></p>
+      <button onclick="closeProfile()" class="button">Đóng</button>
+    </div>
+  </div>
+
+</body>
+</html>

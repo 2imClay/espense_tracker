@@ -1,0 +1,390 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f3f4f6;
+  overflow-x: hidden;
+}
+/* giao diện sẽ chuyển màu trong 0.3 giây */
+body, .left-panel, .right-panel, .modal-content, .button, .top-button, .month-card, .input, select {
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+
+.card {
+  background: #ffffff;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+}
+
+.spacer {
+  flex-grow: 1;
+}
+
+/* setting menu */
+.settings-menu {
+  position: absolute;
+  top: 70px;
+  right: 2rem;
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  min-width: 200px;
+  opacity: 0; /* animation ban đầu */
+  transform: scale(0.95); /* hơi nhỏ 1 tí */
+  pointer-events: none; /* chưa click được */
+  transition: opacity 0.3s ease, transform 0.3s ease; /* transition mềm */
+}
+
+body.dark .settings-menu {
+  background-color: #2d3748;
+}
+
+.settings-menu.show {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto; /* click được */
+}
+
+/* Xóa class .hidden cũ (vì giờ dùng .show để quản lý) */
+
+
+.settings-item {
+  padding: 1rem;
+  text-align: left;
+  background: none;
+  border: none;
+  width: 100%;
+  color: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.settings-item:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+body.dark .settings-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Mục tiêu */
+.modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  width: 90%;
+  max-width: 1300px; /* Rộng hơn: 1300px */
+  max-height: 90vh; /* Chiều cao tối đa */
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr; /* Chia bên trái 45%, bên phải 55% */
+  gap: 3rem; /* Khoảng cách lớn giữa hai cột */
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  animation: fadeInScale 0.3s ease forwards;
+}
+
+body.dark .modal-content {
+  background: #1e1e1e;
+  color: #e0e0e0;
+}
+
+body.dark .profileModal-content {
+  background: #1e1e1e;
+  color: #e0e0e0;
+}
+
+
+#goalList {
+  overflow-y: auto;
+  max-height: 65vh;
+  padding-right: 0.5rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+
+
+
+/* Dark mode */
+body.dark {
+  background-color: #121212; /* nền chính */
+  color: #e0e0e0; /* chữ chính */
+}
+
+/* Panel chính */
+body.dark .left-panel,
+body.dark .right-panel,
+body.dark .modal-content {
+  background-color: #1e1e1e; /* nền card tối */
+  color: #e0e0e0;
+  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.05); /* shadow sáng nhẹ */
+}
+
+body.dark .top-bar {
+  background: rgba(31, 41, 55, 0.7); /* màu tối trong suốt 70% */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.05); /* bóng sáng nhẹ */
+}
+
+
+
+/* Input & Select */
+body.dark .input, 
+body.dark select {
+  background-color: #2a2a2a;
+  border: 1px solid #444;
+  color: #e0e0e0;
+}
+
+/* Button chung */
+body.dark .button, 
+body.dark .top-button {
+  background-color: #333;
+  color: #e0e0e0;
+  border: none;
+}
+
+body.dark .button:hover, 
+body.dark .top-button:hover {
+  background-color: #555;
+}
+
+/* Logout button nổi bật */
+body.dark .logout-button {
+  background-color: #b91c1c;
+}
+
+body.dark .logout-button:hover {
+  background-color: #991b1b;
+}
+
+/* Card tháng */
+body.dark .month-card {
+  background-color: #1e1e1e;
+  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.05);
+}
+
+/* Scrollbar đẹp hơn */
+body.dark ::-webkit-scrollbar {
+  width: 8px;
+}
+body.dark ::-webkit-scrollbar-track {
+  background: #121212;
+}
+body.dark ::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 10px;
+}
+body.dark ::-webkit-scrollbar-thumb:hover {
+  background: #777;
+}
+
+
+
+
+/* Dashboard */
+
+.top-bar {
+  width: 100%;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: rgba(255, 255, 255, 0.7); /* nền trắng trong suốt 70% */
+  backdrop-filter: blur(10px); /* làm mờ nền */
+  -webkit-backdrop-filter: blur(10px); /* hỗ trợ Safari */
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* bóng nhẹ dưới */
+  overflow-x: hidden;
+  transition: background 0.3s, backdrop-filter 0.3s;
+}
+
+
+.top-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-shrink: 0; /* Ngăn các nút bị co lại hoặc biến mất */
+}
+
+
+.top-button {
+  margin-right: 50px;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  background-color: #3b82f6;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.top-button:hover {
+  background-color: #2563eb;
+}
+
+.logout-button {
+  background-color: #ef4444;
+  margin-right: 50px;
+}
+
+.logout-button:hover {
+  background-color: #dc2626;
+}
+
+.dashboard-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: auto;
+  padding: 2rem;
+  width: 100%;
+}
+
+.left-panel {
+  flex: 1;
+  min-width: 300px;
+  max-height: 500px;
+  background: white;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+  overflow-y: auto; /* cho phép cuộn dọc */
+}
+
+/* Right Panel (danh sách tháng) */
+.right-panel {
+  flex: 1;
+  min-width: 300px;
+  background: white;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+  /* thêm dưới đây */
+  max-height: 75vh; /* 75% chiều cao màn hình, bạn chỉnh cao hơn/thấp hơn nếu thích */
+  overflow-y: auto; /* cho phép cuộn dọc */
+}
+
+.input {
+  width: 90%;
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: #f9f9f9;
+}
+
+.button {
+  background-color: #3b82f6;
+  color: white;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  width: 100%;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 20px;
+}
+
+.button:hover {
+  background-color: #2563eb;
+}
+
+.modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  animation: fadeInScale 0.3s ease forwards;
+}
+
+.profileModal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.profileModal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  animation: fadeInScale 0.3s ease forwards;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-container {
+    flex-direction: column;
+    padding: 1rem;
+  }
+}
+
+#monthList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.month-card {
+  background: white;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+}
+
+.month-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.15);
+}

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Đăng nhập</title>
+  <script defer src="/frontend/js/login.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+  <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-sm">
+    <h2 class="text-2xl font-bold text-center mb-6">Đăng nhập</h2>
+    <input id="username" type="text" placeholder="Tên đăng nhập" class="border w-full p-2 mb-4 rounded" />
+    <input id="password" type="password" placeholder="Mật khẩu" class="border w-full p-2 mb-4 rounded" />
+    <button onclick="login()" class="bg-blue-500 text-white w-full p-2 rounded hover:bg-blue-600">Đăng nhập</button>
+    <p class="text-center mt-4 text-sm">
+      Chưa có tài khoản? <a href="register.html" class="text-blue-500 hover:underline">Đăng ký</a>
+    </p>
+  </div>
+</body>
+</html>
