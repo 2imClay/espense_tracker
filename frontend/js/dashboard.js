@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
   document.getElementById('welcome').textContent = `Xin chào, ${currentUser.username}!`;
   loadExpenseCategories();
   loadExpensesSummary();
+  drawExpenseChart();
 });
 
 // Lưu tổng tiền đầu tháng theo tháng đã chọn
@@ -73,6 +74,7 @@ function addExpense() {
   document.getElementById('expenseAmount').value = '';
 
   loadExpensesSummary();
+  drawExpenseChart();
 }
 
 // Xóa dữ liệu chi tiêu tháng
@@ -85,6 +87,8 @@ function deleteMonth(month) {
     loadExpensesSummary(); // Cập nhật lại giao diện
     alert('Đã xoá chi tiêu tháng ' + month);
   }
+
+  drawExpenseChart();
 }
 
 
@@ -278,20 +282,6 @@ function loadGoalList() {
 }
 
 
-
-// Lấy icon
-// function getGoalIcon(category) {
-//   switch (category.toLowerCase()) {
-//     case 'ăn uống': return '🍽️';
-//     case 'di chuyển': return '🚗';
-//     case 'giải trí': return '🎮';
-//     case 'tiết kiệm': return '💰';
-//     case 'du lịch': return '✈️';
-//     case 'mua sắm': return '🛒';
-//     default: return '🎯'; // default icon
-//   }
-// }
-
 function loadExpensesSummary() {
   const currentUser = JSON.parse(localStorage.getItem('currentUser'));
   const monthListDiv = document.getElementById('monthList');
@@ -404,4 +394,58 @@ function deleteGoalCategory(index) {
 
   loadGoalList();
   loadExpenseCategories();
+}
+
+// Xử Lý Thống kê
+
+function drawExpenseChart() {
+  const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  if (!currentUser) return;
+
+  const allKeys = Object.keys(localStorage);
+  const expenseKeys = allKeys.filter(key => key.startsWith(`data_${currentUser.username}_`));
+
+  const categoryTotals = {}; // gom chi tiêu theo loại
+
+  expenseKeys.forEach(key => {
+    const data = JSON.parse(localStorage.getItem(key)) || { expenses: [] };
+    data.expenses.forEach(exp => {
+      if (!categoryTotals[exp.category]) {
+        categoryTotals[exp.category] = 0;
+      }
+      categoryTotals[exp.category] += exp.amount;
+    });
+  });
+
+  const ctx = document.getElementById('expensesChart').getContext('2d');
+
+  // Nếu đã có chart trước đó, phải huỷ để vẽ lại
+  if (window.expenseChart) {
+    window.expenseChart.destroy();
+  }
+
+  window.expenseChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels: Object.keys(categoryTotals),
+      datasets: [{
+        data: Object.values(categoryTotals),
+        backgroundColor: [
+          '#ff6384', '#36a2eb', '#ffcd56', '#4bc0c0', '#9966ff', '#ff9f40'
+        ]
+      }]
+    },
+    options: {
+      maintainAspectRatio: true,   // GIỮ tỉ lệ hình
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'bottom',
+          labels: {
+            color: '#333', // hoặc màu trắng cho dark mode
+          }
+        }
+      }
+    }
+  });
 }
