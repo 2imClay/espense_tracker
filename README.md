@@ -3,9 +3,6 @@
 Một ứng dụng web đơn giản giúp bạn quản lý chi tiêu hàng tháng, thiết lập mục tiêu tài chính, và theo dõi thói quen tiêu dùng hiệu quả.
 
 ## 📸 Giao diện
-## 📸 Giao diện
-
-## 📸 Giao diện
 
 <div align="center">
   <img src="https://github.com/user-attachments/assets/2931d4bb-e49d-4478-9fee-125b235bb8fd" width="500"/><br><br>
@@ -18,10 +15,6 @@ Một ứng dụng web đơn giản giúp bạn quản lý chi tiêu hàng thán
 
   <img src="https://github.com/user-attachments/assets/e993dc46-47e8-4016-9d45-3f0688af62cd" width="500"/>
 </div>
-
-
-
-
 
 ## ✨ Tính năng nổi bật
 
