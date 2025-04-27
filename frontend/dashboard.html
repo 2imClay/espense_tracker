@@ -44,6 +44,25 @@
         <label class="block mb-2 font-semibold">Số tiền mục tiêu:</label>
         <input id="goalCategoryAmount" type="number" placeholder="VD: 5000000" class="input mb-6" />
 
+        <div class="mb-4">
+          <label for="goalCategoryEmoji" class="block font-semibold mb-2">Chọn emoji đại diện:</label>
+          <select id="goalCategoryEmoji" class="input">
+            <option value="🎯">🎯 Mục tiêu</option>
+            <option value="💰">💰 Tiền bạc</option>
+            <option value="🛒">🛒 Mua sắm</option>
+            <option value="🍔">🍔 Ăn uống</option>
+            <option value="✈️">✈️ Du lịch</option>
+            <option value="🚕">🚕 Đi lại</option>
+            <option value="🏡">🏡 Nhà cửa</option>
+            <option value="💳">💳 Thanh toán</option>
+            <option value="📚">📚 Học tập</option>
+            <option value="🎉">🎉 Giải trí</option>
+            <option value="🛠️">🛠️ Sửa chữa</option>
+            <option value="🏥">🏥 Y tế</option>
+          </select>
+        </div>
+             
+
         <button onclick="addGoalCategory()" class="button mb-4">➕ Thêm loại mục tiêu</button>
 
         <button onclick="closeGoals()" class="button mt-auto">Đóng</button>
@@ -107,7 +126,7 @@
       </div>
 
       <div class="right-panel w-full md:w-[48%]">
-        <h2 class="text-2xl font-bold mb-4">Danh sách theo tháng</h2>
+        <h2 class="text-2xl font-bold mb-4">📄 Danh sách theo tháng</h2>
         <div id="monthList" class="space-y-4"></div>
       </div>
     </div>
