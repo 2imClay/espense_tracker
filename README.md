@@ -3,9 +3,9 @@
 Một ứng dụng web đơn giản giúp bạn quản lý chi tiêu hàng tháng, thiết lập mục tiêu tài chính, và theo dõi thói quen tiêu dùng hiệu quả.
 
 ## 📸 Giao diện
-> *(Thay ảnh dưới đây bằng ảnh chụp thực tế giao diện nếu có)*
+![image](https://github.com/user-attachments/assets/2931d4bb-e49d-4478-9fee-125b235bb8fd)
 
-![Screenshot](./screenshot.png)
+
 
 ## ✨ Tính năng nổi bật
 
@@ -22,7 +22,7 @@ Một ứng dụng web đơn giản giúp bạn quản lý chi tiêu hàng thán
 
 1. Clone repository về máy:
    ```bash
-   git clone https://github.com/yourusername/your-repo.git
+   git clone https://github.com/2imClay/espense_tracker.git
    ```
 2. Mở file `index.html` bằng trình duyệt bất kỳ.
 
@@ -33,7 +33,7 @@ Một ứng dụng web đơn giản giúp bạn quản lý chi tiêu hàng thán
 - ✨ Truy cập trang **Register** để tạo tài khoản.
 - ✨ Đăng nhập và **thiết lập tổng tiền** đầu tháng.
 - ✨ **Ghi lại các khoản chi tiêu** và phân loại rõ ràng.
-- ✨ **Xem thống kê** chi tiêu theo mục tiêu mỗi tháng.
+- ✨ **Xem thống kê** chi tiêu theo mục tiêu.
 - ✨ Sử dụng **Dark mode** để trải nghiệm giao diện tối.
 
 ## 🛠️ Công nghệ sử dụng
@@ -48,7 +48,7 @@ Một ứng dụng web đơn giản giúp bạn quản lý chi tiêu hàng thán
 Nếu bạn có góp ý, câu hỏi hoặc muốn đóng góp thêm:
 
 - Email: **your-email@example.com**
-- GitHub: [yourusername](https://github.com/yourusername)
+- GitHub: 2imClay(https://github.com/2imClay)
 
 ---
 
