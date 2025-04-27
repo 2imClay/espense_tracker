@@ -4,7 +4,7 @@ body {
   overflow-x: hidden;
 }
 /* giao diện sẽ chuyển màu trong 0.3 giây */
-body, .left-panel, .right-panel, .modal-content, .button, .top-button, .month-card, .input, select {
+body, .left-panel, .right-panel, .statistics-panel, .modal-content, .button, .top-button, .month-card, .input, select {
   transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
@@ -130,6 +130,7 @@ body.dark {
 /* Panel chính */
 body.dark .left-panel,
 body.dark .right-panel,
+body.dark .statistics-panel,
 body.dark .modal-content {
   background-color: #1e1e1e; /* nền card tối */
   color: #e0e0e0;
@@ -252,6 +253,7 @@ body.dark ::-webkit-scrollbar-thumb:hover {
 
 .dashboard-container {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   gap: 2rem;
   max-width: 1200px;
@@ -260,9 +262,47 @@ body.dark ::-webkit-scrollbar-thumb:hover {
   width: 100%;
 }
 
+.rowContent1 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: auto;
+  width: 100%;
+}
+.rowContent2 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: auto;
+  width: 100%;
+}
+
 .left-panel {
   flex: 1;
   min-width: 300px;
+  max-height: 500px;
+  min-height: 500px;
+  background: white;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+  overflow-y: auto; /* cho phép cuộn dọc */
+}
+.left-panel:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+  transition: all 0.3s;
+}
+
+/* Right Panel (danh sách tháng) */
+.right-panel {
+  flex: 1;
+  min-width: 300px;
+  min-height: 500px;
   max-height: 500px;
   background: white;
   border-radius: 1rem;
@@ -270,19 +310,41 @@ body.dark ::-webkit-scrollbar-thumb:hover {
   box-shadow: 0 10px 15px rgba(0,0,0,0.1);
   overflow-y: auto; /* cho phép cuộn dọc */
 }
-
-/* Right Panel (danh sách tháng) */
-.right-panel {
-  flex: 1;
-  min-width: 300px;
-  background: white;
-  border-radius: 1rem;
-  padding: 2rem;
-  box-shadow: 0 10px 15px rgba(0,0,0,0.1);
-  /* thêm dưới đây */
-  max-height: 75vh; /* 75% chiều cao màn hình, bạn chỉnh cao hơn/thấp hơn nếu thích */
-  overflow-y: auto; /* cho phép cuộn dọc */
+.right-panel:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+  transition: all 0.3s;
 }
+
+.statistics-panel {
+  background-color: #ffffff; /* nền trắng */
+  border-radius: 1rem; /* bo góc lớn */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* shadow nhẹ */
+  padding: 2rem;
+  width: 100%;
+  min-width: 300px;
+  min-height: 500px;
+  max-height: 500px;
+  margin: auto;
+}
+
+.statistics-panel:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+  transition: all 0.3s;
+}
+
+/* canvas {
+  max-width: 100%;
+  height: auto;
+} */
+#expensesChart {
+  width: 100% !important;
+  height: auto !important;
+  max-width: 300px; /* max 400px thôi */
+}
+
+
 
 .input {
   width: 90%;

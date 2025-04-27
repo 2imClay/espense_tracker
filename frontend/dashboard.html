@@ -6,6 +6,7 @@
   <title>Dashboard - Quản lý chi tiêu</title>
   <link rel="stylesheet" href="/frontend/css/style.css">
   <script defer src="/frontend/js/dashboard.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="bg-gray-100 min-h-screen flex flex-col items-center justify-start text-black dark:bg-gray-800 dark:text-white relative">
 
@@ -63,50 +64,65 @@
   <h1 id="welcome" class="text-3xl font-bold my-8 text-center">Xin chào!</h1>
 
   <div class="dashboard-container">
-    <div class="left-panel">
-      <div class="p-6 mb-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg">
-        <h2 class="text-2xl font-bold mb-4">💰 Thiết lập tổng tiền đầu tháng</h2>
-      
-        <div class="mb-4">
-        <label class="font-semibold mb-2 block">Chọn tháng:</label>
-        <input id="monthInput" type="month" class="input mb-4" />
-        </div>
+    <div class="rowContent1 flex flex-row gap-6">
+      <div class="left-panel w-full md:w-[48%]">
+        <div class="p-6 mb-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg">
+          <h2 class="text-2xl font-bold mb-4">💰 Thiết lập tổng tiền đầu tháng</h2>
+        
+          <div class="mb-4">
+          <label class="font-semibold mb-2 block">Chọn tháng:</label>
+          <input id="budgetMonth" type="month" class="input mb-4" />
+          </div>
 
-        <div class="mb-4">
-        <label class="font-semibold mb-2 block">Tổng tiền đầu tháng:</label>
-        <input id="budgetInput" type="number" placeholder="VD: 10000000" class="input mb-6" />
-        </div>
+          <div class="mb-4">
+          <label class="font-semibold mb-2 block">Tổng tiền đầu tháng:</label>
+          <input id="totalBudget" type="number" placeholder="VD: 10000000" class="input mb-6" />
+          </div>
 
-        <button onclick="saveBudget()" class="button w-full">Lưu tổng tiền</button>
-      </div>
-      
-      <div class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg">
-        <h2 class="text-2xl font-bold mb-4">📝 Thêm khoản chi tiêu</h2>
-
-        <div class="mb-4">
-          <label for="expenseName" class="block font-semibold mb-2">Tên khoản chi tiết:</label>
-          <input id="expenseName" type="text" placeholder="VD: Ăn cơm gà" class="input" />
+          <button onclick="saveBudget()" class="button w-full">Lưu tổng tiền</button>
         </div>
         
-        <div class="mb-4">
-          <label for="expenseCategory" class="block font-semibold mb-2">Phân loại:</label>
-          <select id="expenseCategory" class="input select"></select>
+        <div class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg">
+          <h2 class="text-2xl font-bold mb-4">📝 Thêm khoản chi tiêu</h2>
+
+          <div class="mb-4">
+            <label for="expenseName" class="block font-semibold mb-2">Tên khoản chi tiết:</label>
+            <input id="expenseName" type="text" placeholder="VD: Ăn cơm gà" class="input" />
+          </div>
+          
+          <div class="mb-4">
+            <label for="expenseCategory" class="block font-semibold mb-2">Phân loại:</label>
+            <select id="expenseCategory" class="input select"></select>
+          </div>
+          
+          <div class="mb-6">
+            <label for="expenseAmount" class="block font-semibold mb-2">Số tiền:</label>
+            <input id="expenseAmount" type="number" placeholder="VD: 500000" class="input" />
+          </div>        
+        
+          <button onclick="addExpense()" class="button w-full">Thêm khoản chi</button>
         </div>
         
-        <div class="mb-6">
-          <label for="expenseAmount" class="block font-semibold mb-2">Số tiền:</label>
-          <input id="expenseAmount" type="number" placeholder="VD: 500000" class="input" />
-        </div>        
-      
-        <button onclick="addExpense()" class="button w-full">Thêm khoản chi</button>
+        
       </div>
-      
-      
+
+      <div class="right-panel w-full md:w-[48%]">
+        <h2 class="text-2xl font-bold mb-4">Danh sách theo tháng</h2>
+        <div id="monthList" class="space-y-4"></div>
+      </div>
     </div>
-
-    <div class="right-panel">
-      <h2 class="text-2xl font-bold mb-4">Danh sách theo tháng</h2>
-      <div id="monthList" class="space-y-4"></div>
+    <!-- Panel Thống kê -->
+    <div class="rowContent2 w-full">
+      <div class="statistics-panel p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg">
+        <h2 class="text-2xl font-bold mb-4">📊 Thống kê chi tiêu</h2>
+        <div class="chart-container flex justify-center items-center w-full">
+          <div style="width: 300px; max-width: 100%;">
+            <canvas id="expensesChart"></canvas>
+          </div>
+        </div>
+             
+      
+      </div>
     </div>
     
   </div>
