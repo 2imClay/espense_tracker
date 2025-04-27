@@ -3,12 +3,24 @@
 Một ứng dụng web đơn giản giúp bạn quản lý chi tiêu hàng tháng, thiết lập mục tiêu tài chính, và theo dõi thói quen tiêu dùng hiệu quả.
 
 ## 📸 Giao diện
-![image](https://github.com/user-attachments/assets/2931d4bb-e49d-4478-9fee-125b235bb8fd)
-![image](https://github.com/user-attachments/assets/bcc0a69c-9723-491f-bae4-cada402aa5a1)
-![image](https://github.com/user-attachments/assets/229fe264-fce3-45a7-a03d-b77011a9c1f6)
-![image](https://github.com/user-attachments/assets/d2dda5bd-3b8d-409d-9742-a16d5867d409)
-![image](https://github.com/user-attachments/assets/e993dc46-47e8-4016-9d45-3f0688af62cd)
-![image](https://github.com/user-attachments/assets/c1233930-fe33-4bb6-9625-f997ff8e877a)
+## 📸 Giao diện
+
+<div align="center">
+
+  <img src="https://github.com/user-attachments/assets/2931d4bb-e49d-4478-9fee-125b235bb8fd" width="500"/>
+
+  <img src="https://github.com/user-attachments/assets/bcc0a69c-9723-491f-bae4-cada402aa5a1" width="500"/>
+
+  <img src="https://github.com/user-attachments/assets/229fe264-fce3-45a7-a03d-b77011a9c1f6" width="500"/>
+
+  <img src="https://github.com/user-attachments/assets/d2dda5bd-3b8d-409d-9742-a16d5867d409" width="500"/>
+
+  <img src="https://github.com/user-attachments/assets/e993dc46-47e8-4016-9d45-3f0688af62cd" width="500"/>
+
+  <img src="https://github.com/user-attachments/assets/c1233930-fe33-4bb6-9625-f997ff8e877a" width="500"/>
+
+</div>
+
 
 
 
